@@ -19,9 +19,9 @@ mod tests {
 		let exit_code = find_pattern(&vec![
 			String::from("minigrep"),
 			String::from("needle"),
-			String::from("src/tests/haystack_0.txt"),
-			String::from("src/tests/haystack_1.txt"),
-			String::from("src/tests/haystack_2.txt"),
+			String::from("test/haystack_0.txt"),
+			String::from("test/haystack_1.txt"),
+			String::from("test/haystack_2.txt"),
 		]);
 		assert_eq!(exit_code as i32, Exit::Good as i32);
 

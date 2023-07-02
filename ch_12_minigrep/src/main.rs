@@ -5,7 +5,7 @@ mod args;
 mod exit;
 mod feedback;
 mod find;
-mod tests;
+mod test;
 
 fn main()
 {
