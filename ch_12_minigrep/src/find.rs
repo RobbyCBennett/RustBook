@@ -4,7 +4,7 @@ use crate::feedback::*;
 
 pub fn find_pattern(args: &Args) -> Exit
 {
-	let mut exit_code = Exit::Good;
+	let mut exit_code = Exit::NotFound;
 
 	// Read each file
 	let multiple_files = args.files.len() > 1;
@@ -13,7 +13,7 @@ pub fn find_pattern(args: &Args) -> Exit
 
 		// Error and skip file if missing
 		if result.is_err() {
-			exit_code = Exit::BadArg;
+			exit_code = Exit::Error;
 			missing(&file);
 			continue;
 		}
@@ -21,6 +21,7 @@ pub fn find_pattern(args: &Args) -> Exit
 		// Print each line with the pattern
 		for line in result.unwrap().split("\n") {
 			if line.contains(args.pattern) {
+				exit_code = Exit::Good;
 				if multiple_files {
 					println!("{file}:{line}");
 				}

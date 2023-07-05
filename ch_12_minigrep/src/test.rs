@@ -178,9 +178,25 @@ mod tests
 
 		assert_eq!(exit_code as i32, Exit::Good as i32);
 	}
-
 	#[test]
 	fn test_find_1()
+	{
+		let file = String::from("test/haystack_0.txt");
+		let args = Args {
+			option_ignore_case: false,
+			pattern: &String::from("needle"),
+			files: vec![
+				&file,
+			],
+		};
+
+		let exit_code = find_pattern(&args);
+
+		assert_eq!(exit_code as i32, Exit::NotFound as i32);
+	}
+
+	#[test]
+	fn test_find_2()
 	{
 		let file = String::from("missing");
 		let args = Args {
@@ -193,7 +209,7 @@ mod tests
 
 		let exit_code = find_pattern(&args);
 
-		assert_eq!(exit_code as i32, Exit::BadArg as i32);
+		assert_eq!(exit_code as i32, Exit::Error as i32);
 	}
 
 }

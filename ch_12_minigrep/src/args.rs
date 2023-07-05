@@ -33,7 +33,7 @@ pub fn parse_args_or_exit<'a> (arg_strings: &'a Vec<String>, args: &mut Args<'a>
 	// Exit if there are no files
 	if args.files.len() == 0 {
 		usage();
-		std::process::exit(Exit::BadArg as i32);
+		std::process::exit(Exit::Error as i32);
 	}
 
 	return
