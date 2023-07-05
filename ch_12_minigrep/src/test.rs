@@ -1,6 +1,6 @@
 #[cfg(test)]
-mod tests {
-
+mod tests
+{
 	use crate::args::*;
 	use crate::exit::*;
 	use crate::feedback::*;
