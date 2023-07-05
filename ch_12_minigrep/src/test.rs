@@ -108,7 +108,7 @@ mod tests
 			String::from("needle"),
 			String::from("test/haystack_0.txt"),
 			String::from("test/haystack_1.txt"),
-			String::from("-i"),
+			String::from("--ignore-case"),
 			String::from("test/haystack_2.txt"),
 		];
 		let mut args = Args {
