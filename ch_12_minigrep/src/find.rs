@@ -18,8 +18,16 @@ pub fn find_pattern(args: &Args) -> Exit
 			continue;
 		}
 
-		// Print each line with the pattern
-		for line in result.unwrap().split("\n") {
+		// Read each line
+		for mut line in result.unwrap().split("\n") {
+			// If ignoring case, make line lowercase
+			let lower_line;
+			if args.option_ignore_case {
+				lower_line = line.to_lowercase();
+				line = &lower_line;
+			}
+
+			// Find each line with the pattern
 			if line.contains(args.pattern) {
 				exit_code = Exit::Good;
 				if multiple_files {

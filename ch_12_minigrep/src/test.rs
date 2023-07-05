@@ -161,26 +161,6 @@ mod tests
 	#[test]
 	fn test_find_0()
 	{
-		let file_0 = String::from("test/haystack_0.txt");
-		let file_1 = String::from("test/haystack_1.txt");
-		let file_2 = String::from("test/haystack_2.txt");
-		let args = Args {
-			option_ignore_case: false,
-			pattern: &String::from("needle"),
-			files: vec![
-				&file_0,
-				&file_1,
-				&file_2,
-			],
-		};
-
-		let exit_code = find_pattern(&args);
-
-		assert_eq!(exit_code as i32, Exit::Good as i32);
-	}
-	#[test]
-	fn test_find_1()
-	{
 		let file = String::from("test/haystack_0.txt");
 		let args = Args {
 			option_ignore_case: false,
@@ -196,7 +176,75 @@ mod tests
 	}
 
 	#[test]
+	fn test_find_1()
+	{
+		let file = String::from("test/haystack_1.txt");
+		let args = Args {
+			option_ignore_case: false,
+			pattern: &String::from("needle"),
+			files: vec![
+				&file,
+			],
+		};
+
+		let exit_code = find_pattern(&args);
+
+		assert_eq!(exit_code as i32, Exit::Good as i32);
+	}
+
+	#[test]
 	fn test_find_2()
+	{
+		let file = String::from("test/haystack_2.txt");
+		let args = Args {
+			option_ignore_case: false,
+			pattern: &String::from("needle"),
+			files: vec![
+				&file,
+			],
+		};
+
+		let exit_code = find_pattern(&args);
+
+		assert_eq!(exit_code as i32, Exit::NotFound as i32);
+	}
+
+	#[test]
+	fn test_find_3()
+	{
+		let file = String::from("test/haystack_2.txt");
+		let args = Args {
+			option_ignore_case: false,
+			pattern: &String::from("NEEDLE"),
+			files: vec![
+				&file,
+			],
+		};
+
+		let exit_code = find_pattern(&args);
+
+		assert_eq!(exit_code as i32, Exit::Good as i32);
+	}
+
+	#[test]
+	fn test_find_4()
+	{
+		let file = String::from("test/haystack_2.txt");
+		let args = Args {
+			option_ignore_case: true,
+			pattern: &String::from("needle"),
+			files: vec![
+				&file,
+			],
+		};
+
+		let exit_code = find_pattern(&args);
+
+		assert_eq!(exit_code as i32, Exit::Good as i32);
+	}
+
+	#[test]
+	fn test_find_5()
 	{
 		let file = String::from("missing");
 		let args = Args {

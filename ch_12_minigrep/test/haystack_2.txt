@@ -1,5 +1,5 @@
 hay
-hay needle hay
+hay NEEDLE hay
 hay
-needle
+NEEDLE
 hay
