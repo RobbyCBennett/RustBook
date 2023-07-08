@@ -1,1 +1,1 @@
-pub const REQ_BYTES: usize = 4096;
+pub const REQ_BYTES: usize = 8192;
