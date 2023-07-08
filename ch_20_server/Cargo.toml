@@ -1,5 +1,5 @@
 [package]
-name = "experiments"
+name = "ch_20_server"
 version = "1.0.0"
 edition = "2021"
 
