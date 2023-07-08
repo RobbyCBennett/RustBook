@@ -6,11 +6,13 @@ use crate::limits::*;
 use crate::respond::*;
 
 #[cfg(debug_assertions)]
+#[allow(unused_macros)]
 macro_rules! debug {
 	( $x:expr ) => { println!($x) };
 }
 
 #[cfg(not(debug_assertions))]
+#[allow(unused_macros)]
 macro_rules! debug {
 	($x:expr) => { std::convert::identity($x) }
 }
