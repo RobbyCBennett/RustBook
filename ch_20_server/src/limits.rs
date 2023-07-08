@@ -1,1 +1,1 @@
-pub const REQ_BYTES: usize = 8192;
+pub const MAX_REQ_BYTES: usize = 8192;
