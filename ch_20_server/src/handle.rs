@@ -17,6 +17,10 @@ macro_rules! debug {
 	($x:expr) => { std::convert::identity($x) }
 }
 
+macro_rules! sleep {
+	() => { std::thread::sleep(std::time::Duration::from_secs(5)) }
+}
+
 const RES_BAD: &str        = "HTTP/1.1 400 Bad Request\r\n\r\n";
 const RES_BIG_HEADER: &str = "HTTP/1.1 431 Request Header Fields Too Large\r\n\r\n";
 
@@ -83,6 +87,7 @@ pub fn handle(mut stream: TcpStream)
 	let filename = match method.as_str() {
 		"GET" => match path.as_str() {
 			"/" | "/index" | "/index.html" => FILE_INDEX,
+			"/sleep" => { sleep!(); FILE_INDEX },
 			_ => FILE_404,
 		},
 		_ => FILE_404,
