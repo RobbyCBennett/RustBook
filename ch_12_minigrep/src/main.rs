@@ -1,11 +1,11 @@
-use crate::args::*;
-use crate::find::*;
-
 mod args;
 mod exit;
 mod feedback;
 mod find;
 mod test;
+
+use crate::args::*;
+use crate::find::*;
 
 fn main()
 {
