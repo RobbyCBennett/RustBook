@@ -9,10 +9,10 @@ pub fn respond(stream: &mut TcpStream, message: &str)
 	}
 }
 
-pub fn respond_file(stream: &mut TcpStream, filepath: &str)
+pub fn respond_file(stream: &mut TcpStream, file_path: &str)
 {
 	let status_line = "HTTP/1.1 200 OK";
-	let contents = std::fs::read_to_string(filepath).unwrap();
+	let contents = std::fs::read_to_string(file_path).unwrap();
 	let length = contents.len();
 
 	let message = format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
